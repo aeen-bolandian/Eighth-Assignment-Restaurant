@@ -73,4 +73,21 @@ public class User {
         this.username = username;
     }
     // --------------------------------
+    public void order(List<OrderDetails> orderDetails) {
+        orders.add(new Order(orderDetails , this));
+    }
+
+    public void feedback(String feedback) {
+        feedbacks.add(feedback);
+    }
+
+    public void cancelOrder() {
+        orders.remove(this);
+    }
+
+    public void rate(MenuItem menuItem , double rate) {
+        double rateNum = menuItem.getRating() * menuItem.getChoiceNums();
+        rateNum += rate;
+        menuItem.setRating(rateNum / menuItem.getChoiceNums());
+    }
 }

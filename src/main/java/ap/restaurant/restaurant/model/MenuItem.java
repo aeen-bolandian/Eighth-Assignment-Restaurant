@@ -50,7 +50,6 @@ public class MenuItem {
     // --------------------------------
     // Setters :
     // --------------------------------
-
     public void setCategory(String category) {
         this.category = category;
     }
