@@ -48,4 +48,30 @@ public class Order {
 
     public Status getStatus() { return status; }
     // --------------------------------
+    // Setters :
+    // --------------------------------
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setOrderDetails(List<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+    // --------------------------------
 }

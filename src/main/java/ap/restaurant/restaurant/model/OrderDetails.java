@@ -39,4 +39,26 @@ public class OrderDetails {
         return quantity;
     }
     // --------------------------------
+    // Setters :
+    // --------------------------------
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setMenuItemId(UUID menuItemId) {
+        this.menuItemId = menuItemId;
+    }
+
+    public void setOrderId(UUID orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    // --------------------------------
 }

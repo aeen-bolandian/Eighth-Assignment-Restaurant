@@ -48,4 +48,35 @@ public class MenuItem {
 
     public String getCategory() { return category; }
     // --------------------------------
+    // Setters :
+    // --------------------------------
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setChoiceNums(int choiceNums) {
+        this.choiceNums = choiceNums;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+    // --------------------------------
 }

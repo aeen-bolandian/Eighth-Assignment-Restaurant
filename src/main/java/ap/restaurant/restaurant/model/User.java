@@ -47,4 +47,30 @@ public class User {
         return username;
     }
     // --------------------------------
+    // Setters :
+    // --------------------------------
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFeedbacks(List<String> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    // --------------------------------
 }
