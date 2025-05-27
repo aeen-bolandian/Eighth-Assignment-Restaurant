@@ -1,5 +1,6 @@
 package ap.restaurant.restaurant.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,6 +11,15 @@ public class User {
     private String email;
     private List<String> feedbacks;
     private List<Order> orders;
+
+    public User(String username , String password , String email) {
+        this.id = UUID.randomUUID();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.feedbacks = new ArrayList<>();
+        this.orders = new ArrayList<>();
+    }
 
     // getters :
     // --------------------------------

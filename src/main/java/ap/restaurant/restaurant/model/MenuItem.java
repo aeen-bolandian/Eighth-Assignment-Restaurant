@@ -9,10 +9,19 @@ public class MenuItem {
     private String description;
     private double rating;
     private int choiceNums;
+    private String category;
+
+    public MenuItem(String name , double price , String description , String category) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.category = category;
+        this.choiceNums = 0;
+    }
 
     // Getters :
     // --------------------------------
-
     public int getChoiceNums() {
         return choiceNums;
     }
@@ -36,5 +45,7 @@ public class MenuItem {
     public double getRating() {
         return rating;
     }
+
+    public String getCategory() { return category; }
     // --------------------------------
 }

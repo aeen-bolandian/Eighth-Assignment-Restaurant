@@ -1,17 +1,28 @@
 package ap.restaurant.restaurant.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Order {
     private UUID id;
     private UUID userId;
     private Date createdAt;
-    private double totalPrice;
+    private double totalPrice = 0.0;
+    private List<OrderDetails> orderDetails;
+
+    public Order(List<OrderDetails> orderDetails , User user) {
+        this.id = UUID.randomUUID();
+        this.userId = user.getId();
+        this.createdAt = new Date();
+        this.orderDetails = orderDetails;
+        for (OrderDetails orderDetail : orderDetails) {
+            totalPrice += orderDetail.getPrice();
+        }
+    }
 
     // Getters :
     // --------------------------------
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -27,4 +38,7 @@ public class Order {
     public UUID getUserId() {
         return userId;
     }
+
+    public List<OrderDetails> getOrderDetails() { return orderDetails; }
+    // --------------------------------
 }
