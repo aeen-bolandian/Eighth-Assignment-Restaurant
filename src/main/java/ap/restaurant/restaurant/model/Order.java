@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class Order {
+
+    public enum Status {Pending , Canceled , Completed}
+    private Status status;
+
     private UUID id;
     private UUID userId;
     private Date createdAt;
@@ -15,6 +19,7 @@ public class Order {
         this.id = UUID.randomUUID();
         this.userId = user.getId();
         this.createdAt = new Date();
+        this.status = Status.Pending;
         this.orderDetails = orderDetails;
         for (OrderDetails orderDetail : orderDetails) {
             totalPrice += orderDetail.getPrice();
@@ -40,5 +45,7 @@ public class Order {
     }
 
     public List<OrderDetails> getOrderDetails() { return orderDetails; }
+
+    public Status getStatus() { return status; }
     // --------------------------------
 }
