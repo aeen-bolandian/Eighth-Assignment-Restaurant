@@ -10,14 +10,16 @@ public class MenuItem {
     private double rating;
     private int choiceNums;
     private String category;
+    private int quantity;
 
-    public MenuItem(String name , double price , String description , String category) {
+    public MenuItem(String name , double price , String description , String category , int quantity) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
         this.choiceNums = 0;
+        this.quantity = quantity;
     }
 
     // Getters :
@@ -47,6 +49,8 @@ public class MenuItem {
     }
 
     public String getCategory() { return category; }
+
+    public int getQuantity() { return quantity; }
     // --------------------------------
     // Setters :
     // --------------------------------
@@ -77,5 +81,7 @@ public class MenuItem {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
+    public void setQuantity(int quantity) { this.quantity = quantity; }
     // --------------------------------
 }
