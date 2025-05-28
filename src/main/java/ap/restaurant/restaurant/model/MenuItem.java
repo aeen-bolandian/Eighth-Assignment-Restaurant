@@ -11,7 +11,18 @@ public class MenuItem {
     private int choiceNums;
     private String category;
     private int quantity;
-
+    // constructor for searching item
+    public MenuItem(String name , double price, String description, double rating, int choiceNums, String category, int quantity , UUID id) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.rating = rating;
+        this.choiceNums = choiceNums;
+        this.category = category;
+        this.quantity = quantity;
+        this.id = id;
+    }
+    // constructor for creating item
     public MenuItem(String name , double price , String description , String category , int quantity) {
         this.id = UUID.randomUUID();
         this.name = name;

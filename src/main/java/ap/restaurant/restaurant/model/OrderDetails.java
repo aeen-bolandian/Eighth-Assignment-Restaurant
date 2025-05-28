@@ -9,6 +9,15 @@ public class OrderDetails {
     private int quantity;
     private double price;
 
+    // search constructor
+    public OrderDetails(UUID order , UUID menuItem , int quantity , double price , UUID id ) {
+        this.id = id;
+        this.orderId = order;
+        this.menuItemId = menuItem;
+        this.quantity = quantity;
+        this.price = price;
+    }
+    // create constructor
     public OrderDetails(Order order , MenuItem menuItem, int quantity, double price) {
         this.id = UUID.randomUUID();
         this.orderId = order.getId();

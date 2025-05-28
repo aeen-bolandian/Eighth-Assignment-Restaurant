@@ -11,7 +11,14 @@ public class User {
     private String email;
     private List<String> feedbacks;
     private List<Order> orders;
-
+    // search constructor
+    public User(String username , String password , String email , UUID id) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.id = id;
+    }
+    // create constructor
     public User(String username , String password , String email) {
         this.id = UUID.randomUUID();
         this.username = username;

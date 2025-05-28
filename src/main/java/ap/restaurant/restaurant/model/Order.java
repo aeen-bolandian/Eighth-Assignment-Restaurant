@@ -15,6 +15,13 @@ public class Order {
     private double totalPrice = 0.0;
     private List<OrderDetails> orderDetails;
 
+    // search constructor
+    public Order(List<OrderDetails> orderDetails , UUID userID , UUID id) {
+        this.orderDetails = orderDetails;
+        this.userId = userID;
+        this.status = Status.Pending;
+    }
+    // create constructor
     public Order(List<OrderDetails> orderDetails , User user) {
         this.id = UUID.randomUUID();
         this.userId = user.getId();
