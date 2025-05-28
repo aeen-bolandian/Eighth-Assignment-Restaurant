@@ -1,5 +1,7 @@
 package ap.restaurant.restaurant.model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -11,21 +13,21 @@ public class Order {
 
     private UUID id;
     private UUID userId;
-    private Date createdAt;
+    private Timestamp createdAt;
     private double totalPrice = 0.0;
     private List<OrderDetails> orderDetails;
 
     // search constructor
-    public Order(List<OrderDetails> orderDetails , UUID userID , UUID id) {
+    public Order(List<OrderDetails> orderDetails , UUID userID , UUID id , Status status) {
         this.orderDetails = orderDetails;
         this.userId = userID;
-        this.status = Status.Pending;
+        this.status = status;
     }
     // create constructor
     public Order(List<OrderDetails> orderDetails , User user) {
         this.id = UUID.randomUUID();
         this.userId = user.getId();
-        this.createdAt = new Date();
+        this.createdAt = new Timestamp(new Date().getTime());
         this.status = Status.Pending;
         this.orderDetails = orderDetails;
         for (OrderDetails orderDetail : orderDetails) {
@@ -35,7 +37,7 @@ public class Order {
 
     // Getters :
     // --------------------------------
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
@@ -57,7 +59,7 @@ public class Order {
     // --------------------------------
     // Setters :
     // --------------------------------
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
