@@ -1,12 +1,22 @@
 package ap.restaurant.restaurant.controller;
 
+import ap.restaurant.restaurant.dao.MenuItemDao;
+import ap.restaurant.restaurant.model.MenuItem;
+import ap.restaurant.restaurant.model.Order;
+import ap.restaurant.restaurant.model.OrderDetails;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -17,12 +27,26 @@ public class MenuController implements Initializable {
     @FXML
     private Button orderButton;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
-
     @FXML
-    public void order(ActionEvent event) {
+    private VBox menuItemVbox;
 
+    List<MenuItemController> menuItemControllers = new ArrayList<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<MenuItem> menuItems = MenuItemDao.getAll();
+
+        for (MenuItem menuItem : menuItems) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/menu-item.fxml"));
+                Parent menuItemNode = fxmlLoader.load();
+                MenuItemController menuItemController = fxmlLoader.getController();
+                menuItemControllers.add(menuItemController);
+                menuItemController.setMenuItem(menuItem);
+                menuItemVbox.getChildren().add(menuItemNode);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
-
 }

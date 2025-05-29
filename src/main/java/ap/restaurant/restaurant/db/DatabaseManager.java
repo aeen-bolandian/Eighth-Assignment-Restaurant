@@ -29,6 +29,7 @@ public class DatabaseManager {
                 id PRIMARY KEY DEFAULT UNIQUE NOT NULL,
                 name VARCHAR(50) NOT NULL,
                 quantity INT NOT NULL,
+                rating DOUBLE NOT NULL,
                 description TEXT,
                 price DOUBLE NOT NULL,
                 category VARCHAR(50)

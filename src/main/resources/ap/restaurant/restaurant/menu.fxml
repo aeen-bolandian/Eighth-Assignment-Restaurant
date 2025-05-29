@@ -3,11 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.MenuController">
    <children>
-      <ScrollPane fx:id="menuScrollPane" layoutX="4.0" layoutY="14.0" prefHeight="314.0" prefWidth="591.0" />
+      <ScrollPane fx:id="menuScrollPane" layoutX="4.0" layoutY="14.0" prefHeight="314.0" prefWidth="591.0">
+         <content>
+            <VBox fx:id="menuItemVbox" prefHeight="299.0" prefWidth="594.0" />
+         </content></ScrollPane>
       <Button fx:id="orderButton" layoutX="277.0" layoutY="360.0" mnemonicParsing="false" text="order" />
    </children>
 </AnchorPane>

@@ -88,13 +88,7 @@ public class User {
         feedbacks.add(feedback);
     }
 
-    public void cancelOrder() {
-        orders.remove(this);
-    }
-
-    public void rate(MenuItem menuItem , double rate) {
-        double rateNum = menuItem.getRating() * menuItem.getChoiceNums();
-        rateNum += rate;
-        menuItem.setRating(rateNum / menuItem.getChoiceNums());
+    public void cancelOrder(Order order) {
+        orders.remove(order);
     }
 }
