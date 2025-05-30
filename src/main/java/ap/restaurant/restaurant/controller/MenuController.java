@@ -1,9 +1,12 @@
 package ap.restaurant.restaurant.controller;
 
 import ap.restaurant.restaurant.dao.MenuItemDao;
+import ap.restaurant.restaurant.dao.OrderDao;
+import ap.restaurant.restaurant.dao.OrderDetailsDao;
 import ap.restaurant.restaurant.model.MenuItem;
 import ap.restaurant.restaurant.model.Order;
 import ap.restaurant.restaurant.model.OrderDetails;
+import ap.restaurant.restaurant.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +33,12 @@ public class MenuController implements Initializable {
     @FXML
     private VBox menuItemVbox;
 
+    private User currentUser;
+
+    public User getCurrentUser() { return currentUser; }
+
+    public void setCurrentUser(User user) { this.currentUser = user; }
+
     List<MenuItemController> menuItemControllers = new ArrayList<>();
 
     @Override
@@ -48,5 +57,15 @@ public class MenuController implements Initializable {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    @FXML
+    public void order(ActionEvent event) {
+        List<OrderDetails> orderDetailsList = new ArrayList<>();
+        for (MenuItemController menuItemController : menuItemControllers) {
+            orderDetailsList.add(menuItemController.getOrderDetails());
+            OrderDetailsDao.insert(menuItemController.getOrderDetails()); // insert order details to database
+        }
+        currentUser.order(orderDetailsList);
     }
 }
