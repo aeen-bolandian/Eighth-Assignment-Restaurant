@@ -23,7 +23,7 @@ public class OrderDetailsDao {
         }
     }
     public static void update(OrderDetails od) throws SQLException {
-        String query = "UPDATE FROM orderDetails SET quantity = ? WHERE id = ?";
+        String query = "UPDATE orderDetails SET quantity = ? WHERE id = ?";
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, od.getQuantity());

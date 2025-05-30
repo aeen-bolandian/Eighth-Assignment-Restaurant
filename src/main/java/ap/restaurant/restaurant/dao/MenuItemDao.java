@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class MenuItemDao {
     public static void insert(MenuItem menuItem) {
-        String query = "INSERT INTO menuItems (id , name , quantity , description , price , category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO menuItems (id , name , quantity , description , price , category) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (name) DO NOTHING";
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setObject(1, menuItem.getId());
@@ -40,7 +40,7 @@ public class MenuItemDao {
     }
 
     public static void update(MenuItem menuItem) {
-        String query = "UPDATE FROM menuItems SET name = ?, quantity = ?, description = ?, price = ?, category = ? WHERE id = ?";
+        String query = "UPDATE menuItems SET name = ?, quantity = ?, description = ?, price = ?, category = ? WHERE id = ?";
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, menuItem.getName());
@@ -48,6 +48,7 @@ public class MenuItemDao {
             ps.setString(3, menuItem.getDescription());
             ps.setDouble(4, menuItem.getPrice());
             ps.setString(5, menuItem.getCategory());
+            ps.setObject(6, menuItem.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -56,7 +57,7 @@ public class MenuItemDao {
 
     public static List<MenuItem> getAll() {
         ArrayList<MenuItem> menuItems = new ArrayList<>();
-        String query = "SELECT * FROM menuItemTable";
+        String query = "SELECT * FROM menuItems";
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();

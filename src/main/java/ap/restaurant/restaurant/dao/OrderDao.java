@@ -28,12 +28,14 @@ public class OrderDao {
     }
 
     public static void update(Order order) {
-        String query = "UPDATE FROM orders SET userId = ?, createdAt = ?, status, totalPrice = ? WHERE id = ?";
+        String query = "UPDATE orders SET userId = ?, createdAt = ?, status = ?, totalPrice = ? WHERE id = ?";
         try(Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setObject(1, order.getUserId());
             ps.setTimestamp(2, order.getCreatedAt());
-
+            ps.setString(3, order.getStatus().name());
+            ps.setDouble(4, order.getTotalPrice());
+            ps.setObject(5, order.getId());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class UserDao {
     public static void insert(User user) {
-        String query = "INSERT INTO users (id , name , password , email) VALUES (?,?,?,?)";
+        String query = "INSERT INTO users (id , name , password , email) VALUES (?,?,?,?) ON CONFLICT (name) DO NOTHING";
         try(Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setObject(1 , user.getId());
