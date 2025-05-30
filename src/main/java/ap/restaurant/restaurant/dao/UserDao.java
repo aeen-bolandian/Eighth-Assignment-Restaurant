@@ -26,6 +26,19 @@ public class UserDao {
             System.out.println(e.getMessage());
         }
     }
+    public static void update(User user) {
+        String query = "UPDATE users SET name = ?, password = ?, email = ? WHERE id = ?";
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getEmail());
+            ps.setObject(4, user.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public static List<Order> getUserOrders(User user) {
         String query = "SELECT * FROM orders WHERE userId = ?";
         List<Order> orders = new ArrayList<>();
