@@ -2,7 +2,6 @@ package ap.restaurant.restaurant.dao;
 
 import ap.restaurant.restaurant.db.DatabaseManager;
 import ap.restaurant.restaurant.model.MenuItem;
-import ap.restaurant.restaurant.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

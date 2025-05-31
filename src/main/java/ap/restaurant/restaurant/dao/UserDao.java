@@ -14,26 +14,28 @@ import java.util.UUID;
 
 public class UserDao {
     public static void insert(User user) {
-        String query = "INSERT INTO users (id , name , password , email) VALUES (?,?,?,?) ON CONFLICT (name) DO NOTHING";
+        String query = "INSERT INTO users (id , name , password , email , loggedIn) VALUES (?,?,?,?,?) ON CONFLICT (name) DO NOTHING";
         try(Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setObject(1 , user.getId());
             ps.setString(2,user.getUsername());
             ps.setString(3,user.getPassword());
             ps.setString(4,user.getEmail());
+            ps.setBoolean(5,user.isLoggedin());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
     public static void update(User user) {
-        String query = "UPDATE users SET name = ?, password = ?, email = ? WHERE id = ?";
+        String query = "UPDATE users SET name = ?, password = ?, email = ?, loggedIn = ? WHERE id = ?";
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getEmail());
             ps.setObject(4, user.getId());
+            ps.setBoolean(5, user.isLoggedin());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -55,4 +57,20 @@ public class UserDao {
         }
         return orders;
     }
+
+    public static User findUserByName(String username) {
+        String query = "SELECT * FROM users WHERE name = ?";
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

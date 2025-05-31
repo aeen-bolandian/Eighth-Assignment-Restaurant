@@ -21,10 +21,10 @@ public class MenuItemController {
     private TextArea description;
 
     @FXML
-    private Button menuItemOrderButton;
+    private Button orderMenuItemButton;
 
     @FXML
-    private Button cancelMenuItemOrderButton;
+    private Button cancelOrderMenuItemButton;
 
     @FXML
     private Label choiceNumLabel;
@@ -43,13 +43,20 @@ public class MenuItemController {
         description.setText(menuItem.getDescription());
         orderDetails = new OrderDetails(menuItem , 0 , menuItem.getPrice());
         choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
-        menuItemOrderButton.setOnAction(event -> {
-            orderDetails.setQuantity(menuItem.getQuantity() + 1);
-            choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
+        orderMenuItemButton.setOnAction(event -> {
+            if (orderDetails.getQuantity() < menuItem.getQuantity()) {
+                orderDetails.setQuantity(orderDetails.getQuantity() + 1);
+                choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
+            }
+            else {
+                choiceNumLabel.setText("not enough material");
+            }
         });
-        cancelMenuItemOrderButton.setOnAction(event -> {
-            orderDetails.setQuantity(menuItem.getQuantity() - 1);
-            choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
+        cancelOrderMenuItemButton.setOnAction(event -> {
+            if (orderDetails.getQuantity() > 0) {
+                orderDetails.setQuantity(orderDetails.getQuantity() - 1);
+                choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
+            }
         });
     }
 }

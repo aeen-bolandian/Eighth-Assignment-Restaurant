@@ -1,6 +1,7 @@
 package ap.restaurant.restaurant.model;
 
 import ap.restaurant.restaurant.dao.OrderDao;
+import ap.restaurant.restaurant.dao.OrderDetailsDao;
 import ap.restaurant.restaurant.dao.UserDao;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private List<Order> orders;
+    private boolean loggedin;
+    private List<Order> orders = new ArrayList<>();
     // search constructor
     public User(String username , String password , String email , UUID id) {
         this.username = username;
@@ -26,7 +28,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.orders = new ArrayList<>();
+        this.loggedin = false;
     }
 
     // getters :
@@ -50,6 +52,8 @@ public class User {
     public String getUsername() {
         return username;
     }
+
+    public boolean isLoggedin() { return loggedin; }
     // --------------------------------
     // Setters :
     // --------------------------------
@@ -75,9 +79,15 @@ public class User {
         this.username = username;
         UserDao.update(this);
     }
+
+    public void setLoggedin(boolean loggedin) { this.loggedin = loggedin; }
     // --------------------------------
     public void order(List<OrderDetails> orderDetails) {
         Order order = new Order(orderDetails , this);
+        for (OrderDetails orderDetail : orderDetails) {
+            orderDetail.setOrderId(order.getId());
+            OrderDetailsDao.insert(orderDetail);
+        }
         orders.add(order);
         OrderDao.insert(order);
     }

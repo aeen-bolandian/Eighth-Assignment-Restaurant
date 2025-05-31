@@ -64,7 +64,6 @@ public class MenuController implements Initializable {
         List<OrderDetails> orderDetailsList = new ArrayList<>();
         for (MenuItemController menuItemController : menuItemControllers) {
             orderDetailsList.add(menuItemController.getOrderDetails());
-            OrderDetailsDao.insert(menuItemController.getOrderDetails()); // insert order details to database
         }
         currentUser.order(orderDetailsList);
     }
