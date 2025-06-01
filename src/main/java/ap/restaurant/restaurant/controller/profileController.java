@@ -1,16 +1,20 @@
 package ap.restaurant.restaurant.controller;
 
 import ap.restaurant.restaurant.model.User;
+import ap.restaurant.restaurant.service.Authentication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class profileController implements Initializable {
@@ -56,6 +60,31 @@ public class profileController implements Initializable {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void logoutButtonAction(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                Authentication.logOut(currentUser);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/authentication.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+                stage.setTitle("authentication");
+                stage.show();
+                Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+                currentStage.close();
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
