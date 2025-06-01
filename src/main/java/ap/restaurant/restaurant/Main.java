@@ -12,8 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 
 public class Main extends Application {
+
+    List<User> users = UserDao.getAllUsers();
+
     public void seedData() {
         // Users
         UserDao.insert(new User("admin", "admin", "adminpass"));
@@ -46,6 +51,13 @@ public class Main extends Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            if (users != null) {
+                for (User user : users) {
+                    user.setLoggedin(false);
+                }
+            }
+        }));
     }
 
     public static void main(String[] args) {
