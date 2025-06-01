@@ -12,5 +12,6 @@
             <VBox fx:id="menuItemVbox" prefHeight="299.0" prefWidth="594.0" />
          </content></ScrollPane>
       <Button fx:id="orderButton" layoutX="277.0" layoutY="360.0" mnemonicParsing="false" onAction="#order" text="order" />
+      <Button fx:id="cancelButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="cancel" />
    </children>
 </AnchorPane>

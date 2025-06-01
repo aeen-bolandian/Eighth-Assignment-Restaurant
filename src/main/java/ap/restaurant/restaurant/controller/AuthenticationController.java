@@ -26,6 +26,8 @@ public class AuthenticationController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            Stage currentStage = (Stage) loginButton.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -40,7 +42,7 @@ public class AuthenticationController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            Stage currentStage = (Stage) loginButton.getScene().getWindow();
+            Stage currentStage = (Stage) signUpButton.getScene().getWindow();
             currentStage.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());

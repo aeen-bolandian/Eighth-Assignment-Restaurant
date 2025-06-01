@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +32,14 @@ public class signUpController {
     @FXML
     public void signUpButtonClicked(ActionEvent event) throws IOException {
         Authentication.signUp(username.getText(), password.getText(), email.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sign Up");
+        alert.setHeaderText(null);
+        alert.setContentText("""
+                                  sign up successful 
+                                 login to your account """);
+        alert.showAndWait();
+        moveToSignIn();
     }
 
     @FXML

@@ -89,10 +89,12 @@ public class User {
             OrderDetailsDao.insert(orderDetail);
         }
         orders.add(order);
+        System.out.println("order added");
         OrderDao.insert(order);
     }
 
     public void cancelOrder(Order order) {
         orders.remove(order);
+        OrderDao.delete(order);
     }
 }

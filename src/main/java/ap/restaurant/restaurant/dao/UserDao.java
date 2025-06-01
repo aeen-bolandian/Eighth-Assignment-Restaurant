@@ -34,8 +34,8 @@ public class UserDao {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getEmail());
-            ps.setObject(4, user.getId());
-            ps.setBoolean(5, user.isLoggedin());
+            ps.setObject(5, user.getId());
+            ps.setBoolean(4, user.isLoggedin());
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

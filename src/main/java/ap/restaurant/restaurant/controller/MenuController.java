@@ -12,9 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +26,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
+    @FXML
+    private Button cancelButton;
 
     @FXML
     private ScrollPane menuScrollPane;
@@ -59,12 +64,46 @@ public class MenuController implements Initializable {
         }
     }
 
+    private void openProfilePage() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/profile.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            profileController profileController = fxmlLoader.getController();
+            profileController.setCurrentUser(getCurrentUser());
+            stage.setTitle("Profile");
+            stage.show();
+            Stage currentStage = (Stage) cancelButton.getScene().getWindow();
+            currentStage.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     @FXML
     public void order(ActionEvent event) {
         List<OrderDetails> orderDetailsList = new ArrayList<>();
         for (MenuItemController menuItemController : menuItemControllers) {
-            orderDetailsList.add(menuItemController.getOrderDetails());
+            if (menuItemController.getOrderDetails().getQuantity() > 0)
+                orderDetailsList.add(menuItemController.getOrderDetails());
         }
-        currentUser.order(orderDetailsList);
+        if (!orderDetailsList.isEmpty()) {
+            currentUser.order(orderDetailsList);
+            openProfilePage();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("please at least choose an order");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void cancelButtonAction(ActionEvent event) {
+        openProfilePage();
     }
 }
