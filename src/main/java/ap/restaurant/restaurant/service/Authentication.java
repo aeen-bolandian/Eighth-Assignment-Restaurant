@@ -3,8 +3,6 @@ package ap.restaurant.restaurant.service;
 import ap.restaurant.restaurant.dao.UserDao;
 import ap.restaurant.restaurant.model.User;
 
-import java.util.Scanner;
-
 public class Authentication {
     public static void signUp(String username , String password , String email) {
         // add regex at the end

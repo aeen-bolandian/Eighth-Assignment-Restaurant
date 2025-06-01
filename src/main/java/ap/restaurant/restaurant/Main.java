@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.UUID;
 
 public class Main extends Application {
     public void seedData() {
@@ -39,10 +38,8 @@ public class Main extends Application {
         DatabaseManager.createTables();
         seedData();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/authentication.fxml"));
             Parent root = fxmlLoader.load();
-            MenuController controller = fxmlLoader.getController();
-            controller.setCurrentUser(UserDao.findUserByName("admin"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

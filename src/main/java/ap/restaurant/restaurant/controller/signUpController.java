@@ -1,5 +1,7 @@
 package ap.restaurant.restaurant.controller;
 
+import ap.restaurant.restaurant.service.Authentication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +27,11 @@ public class signUpController {
 
     @FXML
     private Button moveToSignIn;
+
+    @FXML
+    public void signUpButtonClicked(ActionEvent event) throws IOException {
+        Authentication.signUp(username.getText(), password.getText(), email.getText());
+    }
 
     @FXML
     public void moveToSignIn() {
