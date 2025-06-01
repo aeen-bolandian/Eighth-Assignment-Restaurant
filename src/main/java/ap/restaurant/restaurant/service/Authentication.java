@@ -28,5 +28,6 @@ public class Authentication {
 
     public static void logOut(User user) {
         user.setLoggedin(false);
+        UserDao.update(user);
     }
 }
