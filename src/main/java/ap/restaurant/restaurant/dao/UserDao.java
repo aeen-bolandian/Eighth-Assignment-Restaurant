@@ -65,12 +65,26 @@ public class UserDao {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id"));
+                return new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id") , rs.getBoolean("loggedIn"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
-
+    public static List<User> getAllUsers() {
+        String query = "SELECT * FROM users";
+        List<User> users = new ArrayList<>();
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                users.add(new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id") , rs.getBoolean("loggedIn")));
+            }
+            return users;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }
