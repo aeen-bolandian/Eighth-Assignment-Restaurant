@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.signUpController">
+    <children>
+        <Label alignment="CENTER" layoutX="79.0" layoutY="21.0" prefHeight="66.0" prefWidth="447.0" text="SIGN UP" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="37.0" />
+            </font>
+        </Label>
+        <TextField fx:id="username" layoutX="32.0" layoutY="139.0" prefHeight="26.0" prefWidth="541.0" />
+        <TextField fx:id="email" layoutX="32.0" layoutY="216.0" prefHeight="26.0" prefWidth="541.0" />
+        <Text fill="WHITE" layoutX="32.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" wrappingWidth="108.5367431640625">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="32.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="108.5367431640625">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Text>
+        <Button fx:id="moveToSignIn" layoutX="335.0" layoutY="360.0" mnemonicParsing="false" onAction="#moveToSignIn" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: BLACK;" text="SIGN IN" textFill="WHITE" />
+        <Label layoutX="240.0" layoutY="364.0" prefHeight="18.0" prefWidth="94.0" text="have an account?" textFill="WHITE" />
+      <Text fill="WHITE" layoutX="32.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="108.5367431640625">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="password" layoutX="32.0" layoutY="298.0" prefHeight="26.0" prefWidth="541.0" />
+      <Button fx:id="signUpButton" layoutX="256.0" layoutY="334.0" mnemonicParsing="false" text="SIGN UP" />
+    </children>
+</AnchorPane>
