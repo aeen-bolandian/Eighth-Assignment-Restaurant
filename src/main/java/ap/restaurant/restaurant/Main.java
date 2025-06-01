@@ -55,6 +55,7 @@ public class Main extends Application {
             if (users != null) {
                 for (User user : users) {
                     user.setLoggedin(false);
+                    UserDao.update(user);
                 }
             }
         }));
