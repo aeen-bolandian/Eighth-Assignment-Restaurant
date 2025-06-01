@@ -16,11 +16,12 @@ public class User {
     private boolean loggedin;
     private List<Order> orders = new ArrayList<>();
     // search constructor
-    public User(String username , String password , String email , UUID id) {
+    public User(String username , String password , String email , UUID id , boolean loggedin) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.id = id;
+        this.loggedin = loggedin;
     }
     // create constructor
     public User(String username , String password , String email) {
