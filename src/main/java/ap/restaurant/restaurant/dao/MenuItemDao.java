@@ -2,6 +2,7 @@ package ap.restaurant.restaurant.dao;
 
 import ap.restaurant.restaurant.db.DatabaseManager;
 import ap.restaurant.restaurant.model.MenuItem;
+import javafx.scene.chart.PieChart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,5 +75,26 @@ public class MenuItemDao {
             System.out.println(e.getMessage());
         }
         return menuItems;
+    }
+
+    public static MenuItem getById(UUID id) {
+        String query = "SELECT * FROM menuItems WHERE id = ?";
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setObject(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                String desc = rs.getString("description");
+                String category = rs.getString("category");
+                int quantity = rs.getInt("quantity");
+                MenuItem item = new MenuItem(name, price, desc, category, quantity, id);
+                return item;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

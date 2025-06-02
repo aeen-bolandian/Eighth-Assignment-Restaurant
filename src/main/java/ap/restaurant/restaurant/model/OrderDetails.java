@@ -18,11 +18,10 @@ public class OrderDetails {
         this.price = price;
     }
     // create constructor
-    public OrderDetails(MenuItem menuItem, int quantity, double price) {
+    public OrderDetails(MenuItem menuItem, int quantity) {
         this.id = UUID.randomUUID();
         this.menuItemId = menuItem.getId();
         this.quantity = quantity;
-        this.price = menuItem.getPrice() * quantity;
     }
 
     // Getters :

@@ -84,10 +84,12 @@ public class User {
     public void setLoggedin(boolean loggedin) { this.loggedin = loggedin; }
     // --------------------------------
     public void order(List<OrderDetails> orderDetails) {
+        for (OrderDetails orderDetail : orderDetails) {
+            OrderDetailsDao.insert(orderDetail);
+        }
         Order order = new Order(orderDetails , this);
         for (OrderDetails orderDetail : orderDetails) {
             orderDetail.setOrderId(order.getId());
-            OrderDetailsDao.insert(orderDetail);
         }
         orders.add(order);
         System.out.println("order added");

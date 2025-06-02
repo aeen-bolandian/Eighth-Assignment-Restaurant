@@ -1,5 +1,6 @@
 package ap.restaurant.restaurant.controller;
 
+import ap.restaurant.restaurant.dao.MenuItemDao;
 import ap.restaurant.restaurant.model.MenuItem;
 import ap.restaurant.restaurant.model.OrderDetails;
 import javafx.event.ActionEvent;
@@ -41,11 +42,12 @@ public class MenuItemController {
         this.menuItemRef = menuItem;
         menuItemName.setText(menuItem.getName());
         description.setText(menuItem.getDescription());
-        orderDetails = new OrderDetails(menuItem , 0 , menuItem.getPrice());
+        orderDetails = new OrderDetails(menuItem , 0);
         choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
         orderMenuItemButton.setOnAction(event -> {
             if (orderDetails.getQuantity() < menuItem.getQuantity()) {
                 orderDetails.setQuantity(orderDetails.getQuantity() + 1);
+                orderDetails.setPrice(MenuItemDao.getById(orderDetails.getMenuItemId()).getPrice() * orderDetails.getQuantity());
                 choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
             }
             else {
@@ -55,6 +57,7 @@ public class MenuItemController {
         cancelOrderMenuItemButton.setOnAction(event -> {
             if (orderDetails.getQuantity() > 0) {
                 orderDetails.setQuantity(orderDetails.getQuantity() - 1);
+                orderDetails.setPrice(MenuItemDao.getById(orderDetails.getMenuItemId()).getPrice() * orderDetails.getQuantity());
                 choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
             }
         });
