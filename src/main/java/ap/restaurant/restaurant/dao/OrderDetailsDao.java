@@ -21,6 +21,12 @@ public class OrderDetailsDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        MenuItem item = MenuItemDao.getById(od.getMenuItemId());
+        if (item != null) {
+            item.setQuantity(item.getQuantity() - od.getQuantity());
+            MenuItemDao.update(item);
+        }
     }
     public static void update(OrderDetails od) throws SQLException {
         String query = "UPDATE orderDetails SET quantity = ? WHERE id = ?";

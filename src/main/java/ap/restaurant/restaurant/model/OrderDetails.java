@@ -22,6 +22,7 @@ public class OrderDetails {
         this.id = UUID.randomUUID();
         this.menuItemId = menuItem.getId();
         this.quantity = quantity;
+        price = quantity*menuItem.getPrice();
     }
 
     // Getters :

@@ -22,6 +22,7 @@ public class Order {
         this.orderDetails = orderDetails;
         this.userId = userID;
         this.status = status;
+        this.id = id;
     }
     // create constructor
     public Order(List<OrderDetails> orderDetails , User user) {

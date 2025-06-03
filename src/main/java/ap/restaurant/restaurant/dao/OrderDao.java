@@ -22,11 +22,6 @@ public class OrderDao {
             ps.setString(4, order.getStatus().name());
             ps.setDouble(5, order.getTotalPrice());
             ps.executeUpdate();
-
-            for (OrderDetails od : order.getOrderDetails()) {
-                od.setOrderId(order.getId());
-                OrderDetailsDao.insert(od);
-            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
