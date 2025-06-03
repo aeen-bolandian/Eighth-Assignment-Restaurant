@@ -30,8 +30,37 @@ public class signUpController {
     @FXML
     private Button moveToSignIn;
 
+    public static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z\\d]).{8,}$";
+
+    public static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$";
+
+    private static boolean isValidEmail(String email) {
+        return email != null && email.matches(EMAIL_REGEX);
+    }
+
+    private static boolean isValidPassword(String password) {
+        return password != null && password.matches(PASSWORD_REGEX);
+    }
+
+    private void showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
     public void signUpButtonClicked(ActionEvent event) throws IOException {
+        if (!isValidEmail(email.getText())) {
+            showError("Invalid Email", "Please enter a valid email address.");
+            return;
+        }
+        if (!isValidPassword(password.getText())) {
+            showError("Invalid Password", "Password must be at least 8 characters, " +
+                    "contain upper and lower case letters, a digit, and a special character.");
+            return;
+        }
         if (UserDao.findUserByName(username.getText()) == null) {
             Authentication.signUp(username.getText(), password.getText(), email.getText());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
