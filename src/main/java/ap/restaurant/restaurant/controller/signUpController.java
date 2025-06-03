@@ -1,5 +1,6 @@
 package ap.restaurant.restaurant.controller;
 
+import ap.restaurant.restaurant.dao.UserDao;
 import ap.restaurant.restaurant.service.Authentication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,15 +32,24 @@ public class signUpController {
 
     @FXML
     public void signUpButtonClicked(ActionEvent event) throws IOException {
-        Authentication.signUp(username.getText(), password.getText(), email.getText());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sign Up");
-        alert.setHeaderText(null);
-        alert.setContentText("""
-                                  sign up successful 
-                                 login to your account """);
-        alert.showAndWait();
-        moveToSignIn();
+        if (UserDao.findUserByName(username.getText()) == null) {
+            Authentication.signUp(username.getText(), password.getText(), email.getText());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sign Up");
+            alert.setHeaderText(null);
+            alert.setContentText("""
+                     sign up successful\s
+                    login to your account\s""");
+            alert.showAndWait();
+            moveToSignIn();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Sign Up");
+            alert.setHeaderText(null);
+            alert.setContentText("Username already exists");
+            alert.showAndWait();
+        }
     }
 
     @FXML
