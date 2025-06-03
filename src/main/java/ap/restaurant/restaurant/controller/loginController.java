@@ -33,7 +33,7 @@ public class loginController {
     public void signInButtonClicked(ActionEvent event) throws IOException {
         Authentication.logIn(username.getText(), password.getText());
         User user = UserDao.findUserByName(username.getText());
-        if (user != null && user.getPassword().equals(password.getText())) {
+        if (user != null && Authentication.checkPassword(password.getText() , user.getPassword())) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/profile.fxml"));
                 Stage stage = new Stage();
@@ -56,7 +56,7 @@ public class loginController {
             alert.setContentText("Invalid username");
             alert.showAndWait();
         }
-        else if (!user.getPassword().equals(password.getText())) {
+        else if (!Authentication.checkPassword(password.getText() , user.getPassword())) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
