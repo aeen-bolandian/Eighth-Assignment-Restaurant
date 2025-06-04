@@ -1,0 +1,68 @@
+.anchor-pane {
+    -fx-background-color: #ffffffee;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-color: #b1eac1;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(40,135,76,0.11), 10, 0.3, 0, 2);
+}
+
+#menuItemName {
+    -fx-font-size: 18px;
+    -fx-font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #277a44;
+    -fx-alignment: center;
+    -fx-padding: 6 0 4 0;
+}
+
+#description {
+    -fx-font-size: 15px;
+    -fx-background-radius: 11;
+    -fx-background-color: #e8f9ef;
+    -fx-border-color: #c7efd8;
+    -fx-border-radius: 10;
+    -fx-text-fill: #3e4c43;
+    -fx-padding: 7 8 7 8;
+    -fx-wrap-text: true;
+}
+
+#choiceNumLabel {
+    -fx-font-size: 15px;
+    -fx-text-fill: #277a44;
+    -fx-font-weight: 600;
+    -fx-background-radius: 8;
+    -fx-padding: 2 8 2 8;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-background-radius: 15;
+    -fx-background-color: linear-gradient(to right, #39e17b 70%, #2e9f50 100%);
+    -fx-font-size: 19px;
+    -fx-font-family: 'Segoe UI', 'Arial', sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fffefa;
+    -fx-border-color: #aee7c8;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 2, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-pref-width: 27px;
+    -fx-pref-height: 27px;
+    -fx-min-width: 27px;
+    -fx-min-height: 27px;
+    -fx-padding: 0;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #7bffa6 75%, #36bc58 100%);
+}
+
+#cancelOrderMenuItemButton {
+    -fx-background-color: linear-gradient(to right, #ace5bc 60%, #6ac591 100%);
+    -fx-text-fill: #187432;
+}
+
+#cancelOrderMenuItemButton:hover {
+    -fx-background-color: linear-gradient(to right, #bfffde 80%, #41ac53 100%);
+}

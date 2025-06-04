@@ -1,0 +1,45 @@
+.anchor-pane {
+    -fx-background-color: linear-gradient(135deg, #e7fdda 0%, #d1f5ee 100%);
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(60,120,70,0.10), 18, 0.4, 0, 6);
+}
+
+.button {
+    -fx-background-radius: 30;
+    -fx-background-color: linear-gradient(to left, #53d97a 80%, #38983a 100%);
+    -fx-padding: 6 0 6 0;
+    -fx-font-size: 17px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #fffefa;
+    -fx-font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 2, 0, 0, 2);
+    -fx-border-width: 1;
+    -fx-border-color: #beefc8;
+    -fx-border-radius: 30;
+    -fx-pref-width: 265px;
+    -fx-background-insets: 0, 1;
+    -fx-transition: all 0.2s;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to left, #6ef893 80%, #38983a 100%);
+    -fx-effect: dropshadow(gaussian, rgba(50,110,30,0.19), 2, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to left, #6ef893 75%, #50bc5e 100%);
+}
+
+.button:focused {
+    -fx-border-color: #4ae248;
+}
+
+/* Optional: style the label if you add one */
+.label {
+    -fx-font-size: 24px;
+    -fx-font-family: 'Playfair Display', serif;
+    -fx-text-fill: #31542b;
+    -fx-font-weight: 500;
+    -fx-padding: 10 0 15 0;
+}

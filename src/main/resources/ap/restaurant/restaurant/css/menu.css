@@ -1,0 +1,68 @@
+.anchor-pane {
+    -fx-background-color: linear-gradient(135deg, #e8fced 0%, #d5f3e6 100%);
+    -fx-background-radius: 18;
+    -fx-padding: 0;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #b2eac6;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 12;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-background-radius: 14;
+}
+
+.vbox {
+    -fx-spacing: 16;
+    -fx-padding: 16 12 16 12;
+}
+
+.button {
+    -fx-background-radius: 22;
+    -fx-background-color: linear-gradient(to right, #48dd76 70%, #289a46 100%);
+    -fx-padding: 6 18 6 18;
+    -fx-font-size: 17px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #fffefa;
+    -fx-font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 2, 0, 0, 2);
+    -fx-border-width: 1;
+    -fx-border-color: #b2eac6;
+    -fx-border-radius: 22;
+    -fx-background-insets: 0, 1;
+    -fx-pref-width: 130px;
+    -fx-transition: all 0.2s;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #7bffa6 75%, #36bc58 100%);
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to right, #95fac1 80%, #289a46 100%);
+}
+
+#cancelButton {
+    -fx-background-color: linear-gradient(to right, #bbffe0 60%, #6ac591 100%);
+    -fx-text-fill: #187432;
+}
+
+#cancelButton:hover {
+    -fx-background-color: linear-gradient(to right, #bbffe0 70%, #55b682 100%);
+}
+
+.menu-item-card {
+    -fx-background-color: #ffffffcc;
+    -fx-background-radius: 17;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(40,135,76,0.07), 7, 0.1, 0, 2);
+    -fx-border-color: #b2eac6;
+    -fx-border-radius: 14;
+    -fx-spacing: 7;
+}

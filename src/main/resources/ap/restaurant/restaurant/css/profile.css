@@ -1,0 +1,64 @@
+/* Root background */
+.anchor-pane {
+    -fx-background-color: linear-gradient(120deg, #202e23 50%, #5ad18744 100%);
+}
+
+#welcomeTextField {
+    -fx-background-radius: 20;
+    -fx-background-color: #fff;
+    -fx-font-size: 24px;
+    -fx-font-family: "Segoe UI", "Arial Black", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #279954;
+    -fx-effect: dropshadow(gaussian, #47e7a977, 16, 0.38, 0, 3);
+    -fx-alignment: center;
+    -fx-padding: 8 0 8 0;
+    -fx-border-color: #51ca87;
+    -fx-border-width: 1.8;
+    -fx-border-radius: 20;
+    -fx-margin: 10 0 20 0;
+}
+
+.button {
+    -fx-background-radius: 20;
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+    -fx-pref-width: 165px;
+    -fx-pref-height: 38px;
+    -fx-effect: dropshadow(gaussian, #32ffae44, 8, 0.23, 0, 2);
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+    -fx-margin: 14 0 0 0;
+    -fx-transition: all 0.15s;
+}
+
+#newOrderButton {
+    -fx-background-color: linear-gradient(90deg, #3ddd67 70%, #197545 100%);
+}
+
+#newOrderButton:hover {
+    -fx-background-color: linear-gradient(to right, #59ffa5 80%, #36bc58 100%);
+    -fx-text-fill: #1a4e2e;
+}
+
+#orderListButton {
+    -fx-background-color: linear-gradient(90deg, #ffe158 80%, #eec700 100%);
+    -fx-text-fill: #493900;
+}
+
+#orderListButton:hover {
+    -fx-background-color: linear-gradient(90deg, #fff6b0 90%, #ffe158 100%);
+    -fx-text-fill: #197545;
+}
+
+#logoutButton {
+    -fx-background-color: linear-gradient(90deg, #ff5f5f 70%, #ae2b2b 100%);
+    -fx-text-fill: #fff;
+}
+
+#logoutButton:hover {
+    -fx-background-color: linear-gradient(90deg, #ffbaba 82%, #ff5f5f 100%);
+    -fx-text-fill: #ae2b2b;
+}
