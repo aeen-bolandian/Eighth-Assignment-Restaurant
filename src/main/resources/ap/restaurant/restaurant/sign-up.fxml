@@ -26,14 +26,14 @@
                 <Font size="22.0" />
             </font>
         </Text>
-        <Button fx:id="moveToSignIn" layoutX="335.0" layoutY="360.0" mnemonicParsing="false" onAction="#moveToSignIn" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: BLACK;" text="SIGN IN" textFill="WHITE" />
-        <Label layoutX="240.0" layoutY="364.0" prefHeight="18.0" prefWidth="94.0" text="have an account?" textFill="WHITE" />
+        <Button fx:id="moveToSignIn" layoutX="303.0" layoutY="373.0" mnemonicParsing="false" onAction="#moveToSignIn" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: BLACK;" text="SIGN IN" textFill="WHITE" />
+        <Label layoutX="209.0" layoutY="377.0" prefHeight="18.0" prefWidth="94.0" text="have an account?" textFill="WHITE" />
       <Text fill="WHITE" layoutX="32.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="108.5367431640625">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
       <TextField fx:id="password" layoutX="32.0" layoutY="298.0" prefHeight="26.0" prefWidth="541.0" />
-      <Button fx:id="signUpButton" layoutX="256.0" layoutY="334.0" mnemonicParsing="false" text="SIGN UP" onAction="#signUpButtonClicked" />
+      <Button fx:id="signUpButton" layoutX="269.0" layoutY="336.0" mnemonicParsing="false" onAction="#signUpButtonClicked" text="SIGN UP" />
     </children>
 </AnchorPane>

@@ -6,16 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="171.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.MenuItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="565.0" stylesheets="@css/menu-item.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.MenuItemController">
    <children>
-      <Label fx:id="menuItemName" alignment="CENTER" layoutX="-1.0" prefHeight="26.0" prefWidth="171.0" text="Label">
+      <Label fx:id="menuItemName" alignment="CENTER" layoutX="29.0" layoutY="14.0" prefHeight="34.0" prefWidth="442.0" text="Label">
+         <font>
+            <Font name="System Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <Button fx:id="orderMenuItemButton" layoutX="525.0" layoutY="96.0" mnemonicParsing="false" text="+" />
+      <TextArea fx:id="description" editable="false" layoutX="26.0" layoutY="48.0" prefHeight="115.0" prefWidth="448.0" />
+      <Label fx:id="choiceNumLabel" alignment="TOP_CENTER" layoutX="479.0" layoutY="124.0" prefHeight="18.0" prefWidth="91.0" text="Label" textAlignment="CENTER" />
+      <Button fx:id="cancelOrderMenuItemButton" layoutX="497.0" layoutY="96.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" text="-" />
+      <Label fx:id="priceLabel" alignment="CENTER" layoutX="478.0" layoutY="62.0" prefHeight="26.0" prefWidth="91.0" text="Label" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="orderMenuItemButton" layoutX="50.0" layoutY="151.0" mnemonicParsing="false" text="+" />
-      <TextArea fx:id="description" editable="false" layoutX="14.0" layoutY="26.0" prefHeight="115.0" prefWidth="146.0" />
-      <Label fx:id="choiceNumLabel" alignment="TOP_CENTER" layoutX="75.0" layoutY="155.0" prefHeight="18.0" prefWidth="91.0" text="Label" textAlignment="CENTER" />
-      <Button fx:id="cancelOrderMenuItemButton" layoutX="25.0" layoutY="151.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" text="-" />
    </children>
 </AnchorPane>

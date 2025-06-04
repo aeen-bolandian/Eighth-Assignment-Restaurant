@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.profileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@css/profile.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ap.restaurant.restaurant.controller.profileController">
    <children>
       <Label fx:id="welcomeTextField" alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="60.0" prefWidth="575.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <font>
@@ -17,7 +17,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="orderListButton" layoutX="218.0" layoutY="185.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: YELLOW;" text="ORDER LIST">
+      <Button fx:id="orderListButton" layoutX="218.0" layoutY="185.0" mnemonicParsing="false" onAction="#orderListButtonAction" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: YELLOW;" stylesheets="@css/profile.css" text="ORDER LIST">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
