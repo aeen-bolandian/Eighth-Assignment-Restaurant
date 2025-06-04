@@ -20,12 +20,6 @@ public class Main extends Application {
     List<User> users = UserDao.getAllUsers();
 
     public void seedData() {
-        // Users
-        UserDao.insert(new User("admin", "admin", "adminpass"));
-        UserDao.insert(new User("aeen", "admin", "adminpass"));
-        UserDao.insert(new User("bolandian", "admin", "adminpass"));
-
-// MenuItems
         MenuItemDao.insert(new MenuItem(
                 "Margherita Pizza", 8.99, "Classic cheese and tomato pizza", "Pizza", 10));
         MenuItemDao.insert(new MenuItem(
