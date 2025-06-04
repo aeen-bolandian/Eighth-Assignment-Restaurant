@@ -50,6 +50,8 @@ public class UserDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Order order = new Order(OrderDao.getOrderDetails((UUID) rs.getObject("id")) , user.getId() , (UUID) rs.getObject("id") , Order.Status.valueOf(rs.getString("status")) );
+                order.setTotalPrice(rs.getDouble("totalPrice"));
+                order.setCreatedAt(rs.getTimestamp("createdAt"));
                 orders.add(order);
             }
         } catch (SQLException e) {
@@ -63,6 +65,21 @@ public class UserDao {
         try (Connection conn = DatabaseManager.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id") , rs.getBoolean("loggedIn"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static User findUserById(UUID id) {
+        String query = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setObject(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new User(rs.getString("name") , rs.getString("password") , rs.getString("email") , (UUID) rs.getObject("id") , rs.getBoolean("loggedIn"));

@@ -1,11 +1,13 @@
 package ap.restaurant.restaurant.model;
 
+import ap.restaurant.restaurant.dao.MenuItemDao;
 import ap.restaurant.restaurant.dao.OrderDao;
 import ap.restaurant.restaurant.dao.OrderDetailsDao;
 import ap.restaurant.restaurant.dao.UserDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class User {
@@ -84,16 +86,17 @@ public class User {
     public void setLoggedin(boolean loggedin) { this.loggedin = loggedin; }
     // --------------------------------
     public void order(List<OrderDetails> orderDetails) {
-        for (OrderDetails orderDetail : orderDetails) {
-            OrderDetailsDao.insert(orderDetail);
-        }
         Order order = new Order(orderDetails , this);
+        OrderDao.insert(order);
         for (OrderDetails orderDetail : orderDetails) {
+            System.out.println("order details id : " + orderDetail.getId());
             orderDetail.setOrderId(order.getId());
+            OrderDetailsDao.insert(orderDetail);
+            MenuItem item = MenuItemDao.getById(orderDetail.getMenuItemId());
+            item.setQuantity(item.getQuantity() - orderDetail.getQuantity());
         }
         orders.add(order);
         System.out.println("order added");
-        OrderDao.insert(order);
     }
 
     public void cancelOrder(Order order) {
