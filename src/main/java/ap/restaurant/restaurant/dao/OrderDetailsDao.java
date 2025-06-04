@@ -1,11 +1,16 @@
 package ap.restaurant.restaurant.dao;
 
 import ap.restaurant.restaurant.db.DatabaseManager;
+import ap.restaurant.restaurant.model.MenuItem;
 import ap.restaurant.restaurant.model.OrderDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class OrderDetailsDao {
     public static void insert(OrderDetails od) {
@@ -44,5 +49,18 @@ public class OrderDetailsDao {
             ps.setObject(1, od.getId());
             ps.executeUpdate();
         }
+    }
+    public static List<MenuItem> getMenuItems(OrderDetails od) throws SQLException {
+        List<MenuItem> menuItems = new ArrayList<>();
+        String query = "SELECT * FROM orderDetails WHERE id = ?";
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setObject(1, od.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                menuItems.add(new MenuItem(rs.getString("name") , rs.getDouble("price") , rs.getString("description") , rs.getString("category") , rs.getInt("quantity") , (UUID) rs.getObject("id")));
+            }
+        }
+        return menuItems;
     }
 }

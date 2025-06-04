@@ -64,6 +64,25 @@ public class profileController implements Initializable {
     }
 
     @FXML
+    public void orderListButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ap/restaurant/restaurant/view-orders.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Orders");
+            Scene scene = new Scene(fxmlLoader.load());
+            ViewOrdersController controller = fxmlLoader.getController();
+            controller.setCurrentUser(currentUser);
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) welcomeTextField.getScene().getWindow();
+            currentStage.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
     public void logoutButtonAction(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");

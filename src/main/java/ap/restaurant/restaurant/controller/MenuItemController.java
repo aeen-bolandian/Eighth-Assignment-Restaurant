@@ -30,6 +30,9 @@ public class MenuItemController {
     @FXML
     private Label choiceNumLabel;
 
+    @FXML
+    private Label priceLabel;
+
     private MenuItem menuItemRef;
 
     private OrderDetails orderDetails;
@@ -44,6 +47,7 @@ public class MenuItemController {
         description.setText(menuItem.getDescription());
         orderDetails = new OrderDetails(menuItem , 0);
         choiceNumLabel.setText(String.valueOf(orderDetails.getQuantity()));
+        priceLabel.setText(String.valueOf(menuItem.getPrice() + "$"));
         orderMenuItemButton.setOnAction(event -> {
             if (orderDetails.getQuantity() < menuItem.getQuantity()) {
                 orderDetails.setQuantity(orderDetails.getQuantity() + 1);

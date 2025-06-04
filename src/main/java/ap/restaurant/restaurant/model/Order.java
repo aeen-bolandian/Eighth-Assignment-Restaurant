@@ -23,6 +23,7 @@ public class Order {
         this.userId = userID;
         this.status = status;
         this.id = id;
+        this.createdAt = getCreatedAt();
     }
     // create constructor
     public Order(List<OrderDetails> orderDetails , User user) {
