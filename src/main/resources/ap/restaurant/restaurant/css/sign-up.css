@@ -1,0 +1,63 @@
+.anchor-pane {
+    -fx-background-color: linear-gradient(120deg, #233331 60%, #b5ffe2 100%);
+}
+
+#signUp {
+    -fx-font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 44px;
+    -fx-text-fill: #26533d;
+    -fx-padding: 16 0 28 0;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-font-size: 20px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-weight: normal;
+    -fx-text-fill: #eafffa;
+    -fx-background-color: transparent;
+}
+
+.text {
+    -fx-font-size: 18px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-fill: #caffde;
+}
+
+.text-field {
+    -fx-background-color: #fff;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #20573a;
+    -fx-border-width: 1.25;
+    -fx-text-fill: #244136;
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 0 0 0 10;
+    -fx-pref-height: 32;
+    -fx-effect: dropshadow(gaussian, #85ffc933, 1.7, 0.12, 0, 1);
+    -fx-cursor: text;
+}
+
+.text-field:focused {
+    -fx-border-color: #256042;
+    -fx-background-color: #ecfff5;
+}
+
+#signUpButton {
+    -fx-background-color: linear-gradient(95deg, #167354 30%, #25a361 100%);
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-text-fill: #fff;
+    -fx-font-size: 18px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-weight: normal;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #67e8a533, 2, 0.14, 0, 1);
+    -fx-pref-height: 35;
+    -fx-pref-width: 160;
+    -fx-border-color: transparent;
+}
+
+#signUpButton:hover

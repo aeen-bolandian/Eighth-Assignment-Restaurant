@@ -17,8 +17,8 @@ ext {
   junitVersion = '5.10.2'
 }
 
-sourceCompatibility = '23'
-targetCompatibility = '23'
+//sourceCompatibility = '21'
+//targetCompatibility = '21'
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
@@ -35,9 +35,10 @@ javafx {
 }
 
 dependencies {
-
+  implementation 'org.mindrot:jbcrypt:0.4'
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+  implementation 'org.postgresql:postgresql:42.7.3'
 }
 
 test {
